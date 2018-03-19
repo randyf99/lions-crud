@@ -1,0 +1,43 @@
+LIONS API
+{
+	name: string,
+	age: number,
+	pride: string,
+	gender: string,
+	id: string
+}
+
+1) '/lions', GET, Serve back the lions collection
+2) '/lions/:id', GET, Serve back one lion identified by the id
+3) '/lions', POST, Create a new lion
+4) '/lions/:id', PUT, Update an existing Lion in our db
+5) 'lions/:id', DELETE, Delete a lion from our db
+
+{
+	"GET /lions": {
+	"desc": "returns all items",
+	"response": "200 application/json",
+	"data": "[{},{},{}]"
+},
+	"GET /lions/:id": {
+	"desc": "return one lion identified by its id",
+	"response": "200 application/json",
+	"data": "{}"
+},
+	"POST /lions": {
+	"desc": "create and return a new lion",
+	"response": "201 application/json",
+	"data": "{}"
+},
+	"PUT /lions/:id": {
+	"desc": "update and return the matching lion based on the id",
+	"response": "200 application/json",
+	"data": "{}"
+},
+	"DELETE /lions/:id": {
+	"desc": "delete and returns a matching lion",
+	"response": "200 application/json",
+	"data": "{}"
+}
+}
+

@@ -1,0 +1,10 @@
+{
+  "name": "lions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Randy Ferrer <randfer@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
