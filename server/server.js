@@ -1,9 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var _ = require('lodash');
+var morgan = require('morgan');
 
 var app = express();
 
+app.use(morgan('dev'));
 app.use(express.static('client'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
