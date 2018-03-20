@@ -5,13 +5,22 @@ var morgan = require('morgan');
 
 var app = express();
 
+var lions = [];
+var id = 0;
+
+var updateId = function(req, res, next) {
+  if (!req.body.id) {
+    id++;
+    req.body.id = id + '';
+  }
+
+  next();
+};
+
 app.use(morgan('dev'));
 app.use(express.static('client'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-var lions = [];
-var id = 0;
 
 // routes
 app.get('/lions', (req, res) => {
