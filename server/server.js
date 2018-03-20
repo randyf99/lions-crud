@@ -22,6 +22,12 @@ app.use(express.static('client'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use((err, req, res, next) => {
+  if (err) {
+    res.status(500).send(error);
+  }
+});
+
 app.param('id', function(req, res, next, id) {
   var lion = _.find(lions, { id: id });
 
