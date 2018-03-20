@@ -22,20 +22,29 @@ app.use(express.static('client'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.param('id', function(req, res, next, id) {
+  var lion = _.find(lions, { id: id });
+
+  if (lion) {
+    req.lion = lion;
+    next();
+  } else {
+    res.send();
+  }
+});
+
 // routes
 app.get('/lions', (req, res) => {
   res.json(lions);
 });
 
 app.get('/lions/:id', (req, res) => {
-  var lion = _.find(lions, { id: req.params.id });
+  var lion = req.lion;
   res.json(lion || {});
 });
 
-app.post('/lions', (req, res) => {
+app.post('/lions', updateId, (req, res) => {
   var lion = req.body;
-  id++;
-  lion.id = id + '';
 
   lions.push(lion);
 
