@@ -5,6 +5,9 @@
   "author": "Randy Ferrer <randfer@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "lodash": "^4.17.5",
+    "morgan": "^1.9.0"
   }
 }
