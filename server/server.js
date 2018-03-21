@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var _ = require('lodash');
 var morgan = require('morgan');
 
 var app = express();
@@ -29,7 +28,7 @@ app.use((err, req, res, next) => {
 });
 
 app.param('id', function(req, res, next, id) {
-  var lion = _.find(lions, { id: id });
+  var lion = lions.find(lion => lion.id == id);
 
   if (lion) {
     req.lion = lion;
@@ -63,17 +62,17 @@ app.put('/lions/:id', (req, res) => {
     delete update.id;
   }
 
-  var lion = _.findIndex(lions, { id: req.params.id });
+  var lion = lions.findIndex(lion => lion.id == req.params.id);
   if (!lions[lion]) {
     res.send();
   } else {
-    var updatedLion = _.assign(lions[lion], update);
+    var updatedLion = Object.assign({}, lions[lion], update);
     res.json(updatedLion);
   }
 });
 
 app.delete('/lions/:id', (req, res) => {
-  var lion = _.findIndex(lions, { id: req.params.id });
+  var lion = lions.findIndex(lion => lion.id == req.params.id);
   if (!lions[lion]) {
     res.send();
   } else {
