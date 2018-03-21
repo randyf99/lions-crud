@@ -1,5 +1,4 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
 var app = express();
@@ -18,8 +17,8 @@ var updateId = function(req, res, next) {
 
 app.use(morgan('dev'));
 app.use(express.static('client'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use((err, req, res, next) => {
   if (err) {
