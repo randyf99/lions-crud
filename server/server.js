@@ -10,7 +10,7 @@ app.use(express.static('client'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// we need to mount the routs
+// we need to mount the routes
 app.use('/lions', lionRouter);
 
 app.use((err, req, res, next) => {
