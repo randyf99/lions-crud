@@ -28,7 +28,43 @@ var getValues = function() {
 
 var lions = [];
 
+const lionTemplate =
+  '<h3><%= name %></h3>' + '<h3><%= pride %></h3>' + '<small>age: <%= age %></small>' + '<small><%= gender %></small>';
+
+const makeTemplate = data => {
+  const li = document.createElement('li');
+  const lionList = document.querySelector('.lion-list');
+  const compiled = _.template(lionTemplate);
+  const lionHtml = compiled(data);
+  li.innerHTML = lionHtml;
+  lionList.insertBefore(li, lionList.firstChild);
+};
+
+const updateLionList = () => {
+  const lionData = lions[lions.length - 1];
+  makeTemplate(lionData);
+};
+
+const makeLionList = () => {
+  lions.forEach(lion => {
+    makeTemplate(lion);
+  });
+};
+
+const getAllLions = () => {
+  fetch('/lions')
+    .then(res => {
+      console.log(res);
+      return res.json();
+    })
+    .then(data => {
+      lions = lions.concat(data);
+      makeLionList();
+    });
+};
+
 ready(function() {
+  getAllLions();
   var form = document.querySelector('form');
 
   form.addEventListener('submit', function(e) {
@@ -50,8 +86,7 @@ ready(function() {
       })
       .then(function(createdLion) {
         lions.push(createdLion);
-        // TODO udpate to lions list
-        console.log(lions);
+        updateLionsList();
       });
     return false;
   });

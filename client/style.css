@@ -1,0 +1,30 @@
+body,
+html {
+  height: 100%;
+}
+
+main {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.textbox {
+  max-width: 200px;
+  margin-bottom: 40px;
+  position: relative;
+  width: 100%;
+}
+
+.textbox input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #bf0000;
+}
+
+.textbox input:focus {
+  outline: none;
+}
