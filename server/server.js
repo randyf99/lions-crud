@@ -1,7 +1,10 @@
 var express = require('express');
 var morgan = require('morgan');
+var mongoose = require('mongoose');
 
 var app = express();
+
+mongoose.connect('mongodb://yoda:yodaLionsdb@ds123919.mlab.com:23919/lions');
 
 var lionRouter = require('./lions');
 
