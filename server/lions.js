@@ -70,6 +70,7 @@ lionRouter.put('/:id', (req, res) => {
   });
 });
 
+// Delete
 lionRouter.delete('/:id', (req, res) => {
   Lion.remove({ _id: req.params.id }, (err, lion) => {
     if (err) {
